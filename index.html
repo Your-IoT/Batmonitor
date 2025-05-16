@@ -177,20 +177,13 @@
 <h2>Batmonitor: IoT battery voltage level monitoring</h2>
 <p style="text-align: justify;">
 Batmonitor comes with a combination of the LoRa based devices and a dashboard webapp.
-LoRa sender is a low power device which is measuring a battery voltage once per 10 minutes. These datas are transmitted to the LoRa receiver.
-Receiver has WiFi connection, which is used to perform a HTTPS POST request to the target domain, where webapp is running.
-Datas are stored in MySQL database and accessable to the users.
+The main LoRa node works as sender. It's a lot power device, which is measuring a battery voltage once per 10 minutes. These datas are transmitted to the LoRa receiver via compatible 433 / 868 / 915 MHz band.
+Receiver has a WiFi connection, which is used to perform a HTTPS POST request to the target domain, where webapp is running to store these datas.
+Datas are stored in MySQL database and accessable to the users within a webapp.
 </p>
 <p style="text-align: justify;">
 Web interface provides various visualisations in graphical environment. 
 It's providing informations about battery voltage supplemented with technical datas about RSSI, SNR, frequency ofset parameters.
-
-
-has also statistics that visualises maximum and minimum water level measurement per time period of day, week, month in Gauge graph.
-Sensor node can provide water level in differential (from the top) or total (from the bottom) measurement.
-Suitable for applications in dug wells, cesspools, tanks. Can also be used to monitor bulk materials in storage areas such as silos, containers.
-Web application is fully responsive and available for all platforms including smartphones, computers, Smart TVs.
-Webapp is translated to English, German, French, Spanish, Russian and Slovak language.
 </p>
           </div>
 
@@ -202,8 +195,8 @@ Webapp is translated to English, German, French, Spanish, Russian and Slovak lan
                   <i class="bi bi-collection-play"></i>
                   <h3>Usage Scenarios</h3>
                   <p style="text-align: justify;">
-  Ideal for <strong>real-time water level monitoring</strong> in <strong>wells</strong>, <strong>tanks</strong>, <strong>sumps</strong>, <strong>lakes</strong>, <strong>ponds</strong>, <strong>rivers</strong>, <strong>reservoirs</strong>, and <strong>sewage systems</strong>. 
-  Also suitable for <strong>waste management</strong> and <strong>measuring bulk material levels</strong> in industrial or home applications.
+  Ideal for <strong>battery voltage level monitoring</strong> for <strong>electric fences</strong>, <strong>UPS</strong>, <strong>off-grid installations</strong>, <strong>car batteries</strong>, <strong>backup sources</strong>.
+  Also suitable for <strong>IoT sensors</strong>.
 </p>
                 </div>
               </div> <!-- End Icon Box -->
@@ -211,15 +204,15 @@ Webapp is translated to English, German, French, Spanish, Russian and Slovak lan
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box">
                   <i class="bi bi-clipboard-check"></i>
-                  <h3>Supported Sensor Types</h3>
-                  <p style="text-align: justify;">The web interface is universal. It does not distinguish from which sensor it obtained data. Any sensor for which you customize the firmware is supported. For a ready-made industrial solution, you set a callback to the Watmonitor interface.</p>
+                  <h3>Supported Bands</h3>
+                  <p style="text-align: justify;">Supported LoRa frequency band depends on used LoRa module and your region. Usually there is 868 and 433 MHz band available in Europe. For Canada 915 MHz, for Asia 923 MHz and 433 MHz in some cases.</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box">
                   <i class="bi bi-cpu-fill"></i>
-                  <h3><a href="https://github.com/martinius96/hladinomer-studna-scripty/tree/master/examples/Hladinomer/HTTPS">Sensor node</a></h3>
+                  <h3>Sender</h3>
 <p style="text-align: justify;">For Watmonitor, several source codes (Arduino Core) are available for open-source hardware ESP32, ESP8266 and Arduino with support for WiFi, Ethernet connections to this web interface.
 All implementations are tied to ultrasonic distance sensors with Trigger and Echo signals (HC-SR04, HY-SRF05, JSN-SR04T).
 For ESP8266 and ESP32, extended program implementations with support for Deep Sleep (ULP), Over-The-Air (OTA) are also available.
