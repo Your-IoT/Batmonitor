@@ -196,7 +196,7 @@ In the web interface, there is included configuration of the current LoRa settin
                   <i class="bi bi-collection-play"></i>
                   <h3>Usage Scenarios</h3>
                   <p style="text-align: justify;">
-  Ideal for <strong>battery voltage level monitoring</strong> for <strong>electric fencing</strong>, <strong>UPS</strong>, <strong>off-grid installations</strong>, <strong>backup sources</strong>.
+  Ideal for <strong>battery voltage level monitoring</strong> for <strong>electric fencing</strong>, <strong>UPS</strong>, <strong>off-grid installations</strong>.
   Suitable for expansion by <strong>IoT sensors</strong>, custom behaviour and custom applications too.
 </p>
                 </div>
@@ -204,13 +204,13 @@ In the web interface, there is included configuration of the current LoRa settin
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box">
-                  <i class="bi bi-clipboard-check"></i>
+                  <i class="bi bi-wifi"></i>
                   <h3>Supported Bands</h3>
                   <p style="text-align: justify;">
 Supported LoRa frequency band depends on used LoRa module and your region. Usually there is 868 and 433 MHz band available in Europe. 
 For Canada 915 MHz, for Asia 923 MHz and 433 MHz in some cases.
 For 433 MHz band only, there is possible to use SX1278 (RA-02) module, also it comes with u.FL connector. For combined 433 MHz, 868 MHz, 915 MHz and 923 MHz I suggest to use SX1276 which covers all these bands.
-There are some modules with SX1276, e.g. RFM95, unfortunately there isn't possible to attach external antenna via u.FL connector.
+There are some modules with SX1276, e.g. RFM95, unfortunately there isn't possible to attach external antenna via u.FL connector, wire antenna must be soldered directly to the pin only.
 </p>
                 </div>
               </div> <!-- End Icon Box -->
@@ -230,7 +230,7 @@ The device has a solar panel and Lithium battery, 3 dBi antenna. Charging circui
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
                 <div class="icon-box">
-                  <i class="bi bi bi-qr-code-scan"></i>
+                  <i class="bi bi-cpu-fill"></i>
                   <h3>Receiver</h3>
                   <p style="text-align: justify;">
 Receiver is based on a microcontroller ESP32 (Lolin32) and LoRa module RA-02 (SX1278) and comes with a custom PCB 433_LoRa_Lolin32.
@@ -333,15 +333,16 @@ The device has a solar panel and Lithium battery, 3 dBi antenna. Charging circui
       <div class="container">
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="https://i.imgur.com/G27ZaTC.png" class="img-fluid" alt="Overview page of Watmonitor's webapp. Provides real-time data about water level and water volume values, connectivity" title="Overview page of Watmonitor's webapp. Provides real-time data about water level and water volume values, connectivity">
+            <img src="https://i.imgur.com/Z6uQOqo.png" class="img-fluid" alt="Overview page of Batmonitor's webapp. Provides real-time data about battery voltage level" title="Overview page of Batmonitor's webapp. Provides real-time data about battery voltage level">
           </div>
           <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
-            <h3>The root (Overview) page</h3>
+            <h3>Overview page</h3>
             <p class="fst-italic">
-              The main overview of actual state of Watmonitor's sensor node data, connectivity
+              Actual data
             </p>
 <p>
-  Watmonitor's <strong>main page</strong> displays <strong>real-time water level data</strong>, <strong>volume</strong>, and <strong>trends</strong> (increase/decrease). It also shows the <strong>time of recording</strong> and <strong>sensor node connectivity status</strong>, providing users with up-to-date information for effective water monitoring.
+  Batmonitor's <strong>main page</strong> displays <strong>in the real-time battery voltage level</strong>, including graph visualisation of battery voltage for the last 24 hours and the last 10 records of voltage including signal quality info.
+You can choose any time period within the graph and you can download it in .csv or .png format.
 </p>
 
           </div>
@@ -349,15 +350,16 @@ The device has a solar panel and Lithium battery, 3 dBi antenna. Charging circui
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
-            <img src="assets/img/details-2.png" class="img-fluid" alt="Historical measurements within Watmonitor's system. Possible to delete value and also to browse through records or maximum and minimum values per week, month, day" title="Historical measurements within Watmonitor's system. Possible to delete value and also to browse through records or maximum and minimum values per week, month, day">
+            <img src="https://i.imgur.com/fJsHwjP.png" class="img-fluid" alt="Historical measurements within Watmonitor's system. Possible to delete value and also to browse through records or maximum and minimum values per week, month, day" title="Historical measurements within Watmonitor's system. Possible to delete value and also to browse through records or maximum and minimum values per week, month, day">
           </div>
           <div class="col-md-7" data-aos="fade-up">
-            <h3>History & Records pages</h3>
+            <h3>Weekly record</h3>
             <p class="fst-italic">
-              Whole data history, min / max recordings for set period of time
+              Data recorded per week
             </p>
 <p>
-  The <strong>History page</strong> in Watmonitor displays all <strong>water level measurements</strong> in a table format, with the option to delete any record. The <strong>Records page</strong> shows the minimum and maximum water levels for the last 24 hours, 7 days, and 30 days, presented in a <strong>gauge visualization</strong> for easy monitoring.
+  The <strong>Weekly history page</strong> provides Line Area graph visualisation of battery level within a 7 days period. If the 12V battery has its own solar controller that is charging it, you can also see that voltage in the graph. Based on the records, you can see, in what day, there was sunny or rainy on your field.
+It is also possible to download whole graph or its custom cutout on demand in .csv .png .svg format for further analysis, own visualisation.
 </p>
 
           </div>
@@ -365,15 +367,15 @@ The device has a solar panel and Lithium battery, 3 dBi antenna. Charging circui
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/details-3.png" class="img-fluid" alt="Line Area graphs by ApexCharts.js providing water level measurements taken in time with history up to 1 year ago." title="Line Area graphs by ApexCharts.js providing water level measurements taken in time with history up to 1 year ago.">
+            <img src="https://i.imgur.com/Rus3Saw.png" class="img-fluid" alt="Line Area graphs by ApexCharts.js providing water level measurements taken in time with history up to 1 year ago." title="Line Area graphs by ApexCharts.js providing water level measurements taken in time with history up to 1 year ago.">
           </div>
           <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
-            <h3>Line Area Graphs</h3>
+            <h3>Configuration</h3>
             <p class="fst-italic">
-              Overview of water level data in different time series, up to 1 year ago.
+              Overview of LoRa settings of the whole setup
             </p>
 <p>
-  Watmonitor's <strong>Graph page</strong> allows users to easily view and analyze <strong>time-series water level data</strong>. Users can download the entire graph or specific sections and export the data in multiple formats, including <strong>.csv</strong>, <strong>.png</strong>, and <strong>.svg</strong>, for further analysis and reporting.
+  Configuration <strong>page</strong> allows users to see the current LoRa network setup, including frequency, bandwidth, spreading factor, CRC mode, coding rate, or sync word which is used to filter any other traffic within the frequency. These informations are useful for future updates within the system, expanding the network.
 </p>
 
           </div>
@@ -384,44 +386,13 @@ The device has a solar panel and Lithium battery, 3 dBi antenna. Charging circui
             <img src="assets/img/details-4.png" class="img-fluid" alt="Automatiaclly pre-generated source code for ESP32 (Espressif Systems) microcontroller with WiFi or PHY Ethernet connection method to the Watmonitor's interface via HTTP or HTTPS" title="Automatiaclly pre-generated source code for ESP32 (Espressif Systems) microcontroller with WiFi or PHY Ethernet connection method to the Watmonitor's interface via HTTP or HTTPS">
           </div>
           <div class="col-md-7" data-aos="fade-up">
-            <h3>ESP32 program</h3>
+            <h3>E-mail notification</h3>
             <p class="fst-italic">
-              Automatically-generated source code for ESP32 (Arduino IDE)
+              Low battery instant alert
             </p>
            <p>
-  The <strong>Program page</strong> provides pre-generated <strong>source code</strong> for IoT sensor nodes based on the <strong>ESP32</strong> platform, supporting both <strong>WiFi</strong> and <strong>PHY Ethernet</strong> connectivity with <strong>FreeRTOS</strong>, depending on the selected protocol (HTTP or HTTPS). The system automatically configures routes to upload data to Watmonitor on your domain. This source code is compatible with <strong>Arduino Core 3.0.X (2024)</strong>, making it easy to integrate with your IoT water monitoring setup.
-</p>
-
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/details-5.png" class="img-fluid" alt="Schematics, wiring diagrams for supported IoT microcontrollers used for water level monitoring using ultrasonic sensors, including ESP32, ESP8266 and Arduino" title="Schematics, wiring diagrams for supported IoT microcontrollers used for water level monitoring using ultrasonic sensors, including ESP32, ESP8266 and Arduino">
-          </div>
-          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
-            <h3>Wiring diagram</h3>
-            <p class="fst-italic">
-              Wiring diagrams for all supported open-source hardware
-            </p>
-<p>
-  The <strong>wiring diagrams</strong> available on this page are designed for open-source hardware platforms such as <strong>ESP32</strong>, <strong>ESP8266</strong>, and <strong>Arduino</strong>, with program implementations available on <strong>GitHub</strong>. Simplified pin-mapping tables are also provided to help non-technical users easily set up the hardware for their water monitoring system.
-</p>
-
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
-            <img src="assets/img/details-6.png" class="img-fluid" alt="Watmonitor image">
-          </div>
-          <div class="col-md-7" data-aos="fade-up">
-            <h3>Options</h3>
-            <p class="fst-italic">
-              Options to set waterwell dimensions, language
-            </p>
-           <p>
-  This page allows users to input <strong>water well dimensions</strong> (depth and diameter) to calculate the <strong>total water level</strong> and <strong>volume</strong> of the well. The page supports multiple <strong>language options</strong>, including <strong>English</strong>, <strong>Slovak</strong>, <strong>German</strong>, <strong>Russian</strong>, <strong>French</strong>, and <strong>Spanish</strong>, making it accessible to a wide range of users.
+  The <strong>Batmonitor</strong> can send a notification to your e-mail if low battery voltage is recorded, less than 11V. This notification can be sent once per 6 hours, to not disturb you often.
+This notification is early, providing enough time to do a physical check on your battery before it is discharged to the dangerous limits, less than 10,5V, which can lead to sulfation
 </p>
 
           </div>
