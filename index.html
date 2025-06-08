@@ -114,6 +114,7 @@
 <a href="de/"><img src="https://i.imgur.com/XyttCEe.png" alt="Germany.png, 2,2kB" title="Germanian" height="32" width="32"></a>
 <a href="fr/"><img src="https://i.imgur.com/vX7NaZ7.png" alt="french.png, 2,2kB" title="French" height="32" width="32"></a>
 !--->
+          <a href="sk/"><img src="https://i.imgur.com/eKWiNXh.png" alt="Slovak flag.png, 2,2kB" title="Slovakian" height="32" width="32"></a>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -177,14 +178,14 @@
 <h2>Batmonitor: LoRa voltage level monitoring solution</h2>
 <p style="text-align: justify;">
 Batmonitor comes with a combination of the LoRa based devices and a dashboard webapp.
-There is a transmitter LoRa node which is performing battery level measurement once per 10 minutes. These datas are transmitted via LoRa technology via 433 or 868 MHz LoRa.
+There is a transmitter LoRa node which is performing battery level measurement once per 10 minutes (standardly 12V battery, such as traction battery, car battery). These datas are transmitted via LoRa technology on 433 or 868 MHz LoRa band.
 Receiver is able to receive these data and transmit them to the database of the webapp via WiFi connectivity. 
 </p>
 <p style="text-align: justify;">
 Web interface of Batmonitor comes with lightweight responsive design, suitable for computers or smartphones aswell.
 It is providing informations about battery voltage supplemented with technical datas about signal (RSSI, SNR, Frequency ofset).
 There is possible to see these data in graphical visualisation in Line graphs (ApexCharts) for a different time periods.
-In the web interface, there is included configuration of the current LoRa settings set, which can be used for debug, documentation or future expansion for more devices of LoRa network.
+In the web interface, there is included configuration of the current LoRa settings set, which can be used for debug, documentation or future expansion for more devices of a private LoRa network.
 </p>
           </div>
 
@@ -196,7 +197,7 @@ In the web interface, there is included configuration of the current LoRa settin
                   <i class="bi bi-collection-play"></i>
                   <h3>Usage Scenarios</h3>
                   <p style="text-align: justify;">
-  Ideal for <strong>battery voltage level monitoring</strong> for <strong>electric fencing</strong>, <strong>UPS</strong>, <strong>off-grid installations</strong>.
+  Ideal for <strong>battery voltage level monitoring</strong> at <strong>electric fencing</strong>, <strong>UPS</strong>, <strong>off-grid installations</strong>.
   Suitable for expansion by <strong>IoT sensors</strong>, custom behaviour and custom applications too.
 </p>
                 </div>
@@ -595,6 +596,16 @@ That board has a resistors onboard and a connector for a connection of wires fro
   <p><strong>LoRa node communicates</strong> with the Batmonitor using <strong>HTTPS protocol</strong>. 
 Trigger for this action is, when the LoRa receiver receives data of battery voltage (standardly once per 10 minutes), will connect the the WiFi with its pre-defined credentials and perform the HTTPS POST request.
  Data are written into the database via PHP file on which the request is performed.</p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+                            <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+<h3>Is the LoRa payload encrypted?</h3>
+<div class="faq-content">
+  <p><strong>LoRa payload is not encrypted.</strong> It is not necessary, as there are not transmitted any sensitive data, but it is possible to implement that feature. 
+Encryption will extend the total required uptime of LoRa devices and reduce the battery life.</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
