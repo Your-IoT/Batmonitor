@@ -174,7 +174,7 @@
         <div class="row align-items-xl-center gy-5">
 
           <div class="col-xl-5 content">
-<h2>Batmonitor: IoT battery voltage level monitoring</h2>
+<h2>Batmonitor: LoRa voltage level monitoring solution</h2>
 <p style="text-align: justify;">
 Batmonitor comes with a combination of the LoRa based devices and a dashboard webapp.
 There is a transmitter LoRa node which is performing battery level measurement once per 10 minutes. These datas are transmitted via LoRa technology via 433 or 868 MHz LoRa.
@@ -218,26 +218,25 @@ There are some modules with SX1276, e.g. RFM95, unfortunately there isn't possib
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box">
                   <i class="bi bi-cpu-fill"></i>
-                  <h3>Transmitter</h3>
+                  <h3>Transmitter & receiver</h3>
 <p style="text-align: justify;">
-Transmitter is based on a microcontroller ESP32 (Lolin32) and LoRa module RA-02 (SX1278) and comes with a custom PCB 433_LoRa_Lolin32.
-It is a low power device running in a deep sleep mode and waked up via RTC Timer source to perform a measurement of a battery voltage using voltage divider and then for transmission via LoRa module.
-Device has cables with resistors soldered on, these are attached to a 12V battery which is measured using voltage divider.
-The device has a solar panel and Lithium battery, 3 dBi antenna. Charging circuit is directly included on a Lolin32 board.
+Transmitter and receiver are based on a open-source microcontroller ESP32 (Lolin32) and LoRa module RA-02 (SX1278) and comes with a custom PCB 433_LoRa_Lolin32 created by @martinius96 - Your-IoT.
+Both are low-power devices, a transmitter is working in deep sleep mode waked up by a RTC timer, when voltage measurement and LoRa transmission is scheduled.
+A receiver is working in light sleep mode, waked up via external source - HIGH signal from a DIO0 interrupt on a RA-02 module when LoRa packet is received.
+Transmitter has extra wires with resistors, which are attached to a 12V battery terminals.
+Both devices has a 100x100 mm enclosure with a solar panel, Lithium battery and a 3 dBi LoRa antenna. harging circuit is directly included on a Lolin32 board.
 </p>      
  </div>
               </div> <!-- End Icon Box -->
 
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+             <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
                 <div class="icon-box">
-                  <i class="bi bi-cpu-fill"></i>
-                  <h3>Receiver</h3>
+                  <i class="bi bi-hdd-rack-fill"></i>
+                  <h3>Other platforms</h3>
                   <p style="text-align: justify;">
-Receiver is based on a microcontroller ESP32 (Lolin32) and LoRa module RA-02 (SX1278) and comes with a custom PCB 433_LoRa_Lolin32.
-It is a low power device running in a light sleep mode and waked up via HIGH signal from Interrupt pin of a RA-02 module, when packet is received.
-Packed is parsed and data are sent via HTTPS POST request using WiFi connectivity to the database.
-The device has a solar panel and Lithium battery, 3 dBi antenna. Charging circuit is directly included on a Lolin32 board.
-If you as a client does not have option to host Batmonitor's webapp, it is possible to redirect data transfer to 3rd party IoT platforms such as Blynk, ThingsBoard, ThingSpeak.
+Batmonitor system can be tailor made for your purposes and needs. Standardly it comes with a web interface you need to host yourself locally or via webhosting.
+In the case you don't want to host it, there can be made the whole visualisation solution with 3rd party IoT platform such as: Blynk, ThingsBoard, Ubidots or a ThingSpeak etc.
+On these platforms you can use a free to use plans or a pre-paid plan based on your preference.
 </p>
                 </div>
               </div> <!-- End Icon Box -->
@@ -431,59 +430,45 @@ This notification is early, providing enough time to do a physical check on your
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-2.JPG" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-2.JPG" alt="Watmonitor's History page with water level and water volume measurements" class="img-fluid">
+              <a href="https://i.imgur.com/1liVTPE.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/1liVTPE.png" alt="Watmonitor's History page with water level and water volume measurements" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-3.JPG" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-3.JPG" alt="Watmonitor's Gauge graphs showing maximum minimum water level in time period" class="img-fluid">
+              <a href="https://i.imgur.com/kp9POik.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/kp9POik.png" alt="Watmonitor's Gauge graphs showing maximum minimum water level in time period" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-4.JPG" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-4.JPG" alt="Watmonitor Area Line graphs showing water level in time period. Powered by ApexCharts" class="img-fluid">
+              <a href="https://i.imgur.com/jYAiDkF.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/jYAiDkF.png" alt="Watmonitor Area Line graphs showing water level in time period. Powered by ApexCharts" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-5.JPG" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-5.JPG" alt="Highlighted source code for ESP32 micontroller with WiFi or PHY Ethernet support" class="img-fluid">
+              <a href="https://i.imgur.com/5b3kp4l.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/5b3kp4l.png" alt="Highlighted source code for ESP32 micontroller with WiFi or PHY Ethernet support" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-6.JPG" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-6.JPG" alt="Wiring diagram compatible with ESP32, Arduino, ESP8266. Sensor nodes for Watmonitor webapp" class="img-fluid">
+              <a href="https://i.imgur.com/n3kmntA.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/n3kmntA.png" alt="Wiring diagram compatible with ESP32, Arduino, ESP8266. Sensor nodes for Watmonitor webapp" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
 
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-7.JPG" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-7.JPG" alt="Watmonitor settings page. Optional to set waterwell name, its dimensions of diameter, depth. Language setting." class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
 
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-8.JPG" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-8.JPG" alt="QR scanner showing the latest data of water level IoT node" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
 
         </div>
 
@@ -508,7 +493,7 @@ This notification is early, providing enough time to do a physical check on your
             <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
               <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
               <p>
-                The most asked question from the community answered below
+                The most asked question answered below
               </p>
             </div>
 
@@ -516,9 +501,9 @@ This notification is early, providing enough time to do a physical check on your
 
               <div class="faq-item faq-active">
                 <i class="faq-icon bi bi-question-circle"></i>
-<h3>Do I need web hosting to run Watmonitor on my own server?</h3>
+<h3>Do I need web hosting to run Batmonitor on my own server?</h3>
 <div class="faq-content">
-  <p>Yes, to run Watmonitor independently, you will need either local or internet <strong>web hosting</strong>. In order to execute the <strong>PHP scripts</strong> for Watmonitor, your server must have <strong>Apache</strong> or <strong>NGINX</strong> installed. <strong>Ensure that you are using PHP version 5.6 to 7, as Watmonitor is not compatible with PHP version 8.</strong></p>
+  <p>Yes, to run Batmonitor independently, you will need either local or internet <strong>web hosting</strong>. In order to execute the <strong>PHP scripts</strong> for Batmonitor, your server must have <strong>Apache (HTTPD)</strong> or <strong>NGINX</strong> installed.</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -528,7 +513,7 @@ This notification is early, providing enough time to do a physical check on your
                 <i class="faq-icon bi bi-question-circle"></i>
                 <h3>Is it difficult to configure the web application for Watmonitor?</h3>
 <div class="faq-content">
-  <p>Configuring the web application for Watmonitor is made easy with a detailed, <strong>step-by-step guide</strong> in PDF format. This guide simplifies the setup process for all users, including instructions for importing the <strong>.sql file</strong> into <strong>MySQL</strong>, configuring <strong>connect.php</strong> with your <strong>database credentials</strong>, setting up <strong>HTTP Auth</strong> data, and entering the device token.</p>
+  <p>Configuring the web application for Batmonitor is made easy with a detailed, <strong>step-by-step guide</strong> in PDF format. This guide simplifies the setup process for all users, including instructions for importing the <strong>.sql file</strong> into <strong>MySQL</strong>, configuring <strong>connect.php</strong> file with your <strong>database credentials</strong>.</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -536,10 +521,12 @@ This notification is early, providing enough time to do a physical check on your
 
               <div class="faq-item">
                 <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Will Watmonitor automatically generate source code for my hardware?</h3>
+                <h3>What is the current consumption of the hardware?</h3>
 <div class="faq-content">
-  <p>Yes, Watmonitor will automatically generate <strong>source code sketches</strong> for your hardware, including <strong>ESP32</strong> with <strong>WiFi</strong> or <strong>PHY Ethernet</strong> connection and supported <strong>ultrasonic sensors</strong>. The generated sketches will include the necessary <strong>MCU token</strong>, calculate the trace to the target <strong>PHP file</strong>, and automatically add your domain (note: localhost will not work—ensure you use an accessible IP or domain name). The <strong>Root CA certificate</strong> (for HTTPS connections) is not modified, so you will need to manually add it into the sketch for the ESP32.
-  </p>
+  <p>As we are using the cheap hardware, current consumption is higher, mainly due Lolin32 is a devkit that has onboard led diodes, USB-UART converter, etc. 
+Transmitter standardly has a current consumption around 1,95 mA and a receiver around 13 mA due the LoRa module in continuous receiver mode. 
+But as the devices has a onboard solar panel that is charging daily, it is not a problem to compensate that current consumption during the day.
+Receiver is able to work more than 6 days without charging using a solar panel.</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -547,10 +534,12 @@ This notification is early, providing enough time to do a physical check on your
 
               <div class="faq-item">
                 <i class="faq-icon bi bi-question-circle"></i>
-               <h3>Are there additional source codes available beyond those in the Watmonitor app?</h3>
+               <h3>Is is possible to reduce the current consumption?</h3>
 <div class="faq-content">
-  <p>Yes, there are several additional <strong>source codes</strong> available on <strong>GitHub</strong> that are compatible with the Watmonitor interface. These include examples for <strong>Arduino</strong> with Ethernet (ENC or Wiznet series), <strong>ESP8266</strong>, <strong>ESP32</strong>, and other transmission technologies such as <strong>LoRaWAN</strong> and <strong>Sigfox IoT</strong>. You can access these source codes by clicking the "Sensor node examples" button at the top of this page.
-  </p>
+  <p>Yes, there are option in buying different hardware, which is more expensive. 
+Your-IoT (@martinius96) has a XIAO_LoRa PCB board that allows you to use XIAO board (ESP32-C6, ESP32-C3, nRF52840, RP2040, MG24 etc.) which has current consumption in range from 2 up to 90 μA.
+That board has a resistors onboard and a connector for a connection of wires from battery terminals. That PCB is also smaller compared to the current (cheaper) one.
+</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -558,9 +547,9 @@ This notification is early, providing enough time to do a physical check on your
 
               <div class="faq-item">
                 <i class="faq-icon bi bi-question-circle"></i>
-               <h3>What language options are available in the Watmonitor web app?</h3>
+               <h3>What language options are available in the Batmonitor web app?</h3>
 <div class="faq-content">
-  <p>The Watmonitor web app offers full <strong>language translations</strong> for the following languages: <strong>English</strong>, <strong>German</strong>, <strong>Russian</strong>, <strong>Spanish</strong>, <strong>French</strong>, and <strong>Slovak</strong>, making it accessible to a global audience.
+  <p>The Batmonitor offers Slovak or English language in its web interface.
   </p>
 </div>
 
@@ -571,7 +560,7 @@ This notification is early, providing enough time to do a physical check on your
                 <i class="faq-icon bi bi-question-circle"></i>
 <h3>Can I log data from the Watmonitor into other systems?</h3>
 <div class="faq-content">
-  <p>Yes, Watmonitor provides <strong>JSON output</strong> through its web interface, allowing you to easily parse and integrate the data into other systems. Supported platforms include <strong>Loxone</strong>, <strong>Grafana</strong>, <strong>Kibana</strong>, <strong>Domoticz</strong>, <strong>Node-RED</strong>, <strong>Home Assistant</strong>, <strong>Thingsboard</strong>, and more. The data includes the latest <strong>water level</strong>, <strong>water volume</strong>, and <strong>time of record</strong>, all stored in the database.
+  <p>Yes, Batmonitor provides <strong>JSON output</strong> which is accessable via HTTPS request, allowing you to easily parse and integrate the data into other systems.
   </p>
 </div>
 
@@ -580,9 +569,11 @@ This notification is early, providing enough time to do a physical check on your
 
                             <div class="faq-item">
                 <i class="faq-icon bi bi-question-circle"></i>
-<h3>How is Communication Established Between the Server and the Arduino/ESP32 Sensor Node?</h3>
+<h3>How is Communication Established Between the Server and the LoRa receiver?</h3>
 <div class="faq-content">
-  <p><strong>Arduino/ESP32 sensor node communicates</strong> with the webserver using <strong>HTTP or HTTPS protocols</strong>. Every 5 minutes, the sensor node measures the water level and sends the data via a <strong>POST request</strong>. This request includes detailed water level information. Upon receiving the data, the webserver stores it in a MySQL database, enabling instant visualization of water levels through the <strong>Watmonitor</strong> web application. This ensures real-time monitoring and efficient data management.</p>
+  <p><strong>LoRa node communicates</strong> with the Batmonitor using <strong>HTTPS protocol</strong>. 
+Trigger for this action is, when the LoRa receiver receives data of battery voltage (standardly once per 10 minutes), will connect the the WiFi with its pre-defined credentials and perform the HTTPS POST request.
+ Data are written into the database via PHP file on which the request is performed.</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -591,22 +582,15 @@ This notification is early, providing enough time to do a physical check on your
               
               <div class="faq-item">
                 <i class="faq-icon bi bi-question-circle"></i>
-<h3>How Does the IoT Sensor Node Perform Measurement?</h3>
+<h3>How does the Transmitter perform measurement?</h3>
 <div class="faq-content">
-  <p>The IoT sensor node, powered by <strong>Arduino</strong> or <strong>ESP32</strong>, measures distance using an <strong>ultrasonic sensor</strong> with the Time-of-Flight (ToF) method. It sends a HIGH voltage pulse to the Trigger pin of the ultrasonic sensor for 10 μs and then measures the time it takes to detect a HIGH voltage signal on the Echo pin. Using the speed of sound, the sensor calculates the distance in centimeters with high precision. This efficient process ensures accurate distance measurement for IoT applications.</p>
+  <p>Transmitter has a voltage divider, standardly with ratio of 1:5,7. There is a battery voltage on a voltage divider input and on its output is reduced for safe voltage which ESP32 can measure.
+Transmitter will get the ADC value, then it converts it to milivolts and it will also calculate the original (input) value of battery voltage. This value is transmitter via LoRa.</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
 
-<div class="faq-item">
-<i class="faq-icon bi bi-question-circle"></i>
-<h3>What does the callback look like on Watmonitor?</h3>
-<div class="faq-content">
-<p>To write data to Watmonitor, you must use the HTTP request (port 80, or another if it is local hosting) / HTTPS (port 443) POST method to the target host and the data.php file (for example https://hladinomer.eu/data.php). The message parameters are "hodnota" - the water level in centimeters (data type INT) and "token", which represents the authorization token. If the write is successful, you will receive an HTTP 200 header in the server response and also an OK text output. Note: Enter the parameters without quotes.</p>
-</div>
-<i class="faq-toggle bi bi-chevron-right"></i>
-</div><!-- End Faq item-->
 
             </div>
 
@@ -630,7 +614,7 @@ This notification is early, providing enough time to do a physical check on your
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Watmonitor by <img src="https://i.imgur.com/ibpLxAB.png" alt="Your IoT within reach"></span>
+            <span class="sitename">Batmonitor by <img src="https://i.imgur.com/ibpLxAB.png" alt="Your IoT within reach"></span>
           </a>
           <div class="footer-contact pt-3">
             <p>Slovakia, SK Europe</p>
@@ -645,11 +629,7 @@ This notification is early, providing enough time to do a physical check on your
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="https://hladinomer.eu/?lang=en">HTTPS Watmonitor interface</a></li>
-            <li><a href="https://hladinomer.eu/QR/">QR scanner for HTTPS interface</a></li>
-            <hr>
-            <li><a href="http://arduino.clanweb.eu/studna_s_prekladom/?lang=en">HTTP Watmonitor interface</a></li>
-            <li><a href="https://martinius96.github.io/hladinomer-studna-scripty/QR/">QR scanner for HTTP interface</a></li>
+            <li><a href="https://hladinomer.eu/LoRa">Batmonitorinterface</a></li>
 
           </ul>
         </div>
@@ -657,10 +637,7 @@ This notification is early, providing enough time to do a physical check on your
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Documentation</h4>
           <ul>
-            <li><a href="https://docs.google.com/document/d/1mQZHY4OhdbPsJh4F_glSt76WrMBs0OXaEamcr9UgX0c/edit?usp=sharing">Watmonitor MANUAL</a></li>
-            <li><a href="https://docs.google.com/document/d/1zAu9cUEIuZDsCeosv0WeXM5LSUqyt1YhWdWjVYwEpFw/edit?usp=sharing">ESP32 sensor node MANUAL</a></li>
-            <li><a href="https://docs.google.com/document/d/1fGL3cXbddahzq-Gaxa7e43Aqvpis8rck7bwe7MO2YYY/edit?usp=sharing">QR Code Scanner MANUAL</a></li>
-            <li><a href="https://github.com/martinius96/hladinomer-studna-scripty/blob/master/Postman/Dashboard_WaterWell_Monitor.postman_collection">Postman collection, API testing</a></li>           
+            <li><a href="#">Batmonitor MANUAL</a></li>         
           </ul>
         </div>
 
@@ -668,9 +645,8 @@ This notification is early, providing enough time to do a physical check on your
           <h4>Other projects</h4>
           <ul>
             <li><a href="https://your-iot.github.io/DOMINATOR/">RFID DOMINATOR</a></li>
-            <li><a href="https://martinius96.github.io/WiFi-termostat/en/">WiFi thermostat</a></li> 
-            <li><a href="https://martinius96.github.io/termostat-ethernet/en/">Arduino Ethernet thermostat</a></li>  
-            <li><a href="https://martinius96.github.io/termostat-ethernet/en/phy_ethernet.html">ESP32 + PHY Ethernet thermostat</a></li>         
+<li><a href="https://your-iot.github.io/Watmonitor/">Water level monitor</a></li>
+            <li><a href="https://martinius96.github.io/WiFi-termostat/en/">WiFi thermostat</a></li>        
           </ul>
         </div>
 
