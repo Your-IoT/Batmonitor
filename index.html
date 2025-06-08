@@ -236,7 +236,7 @@ Both devices has a 100x100 mm enclosure with a solar panel, Lithium battery and 
                   <h3>Other platforms</h3>
                   <p style="text-align: justify;">
 Batmonitor system can be tailor made for your purposes and needs. Standardly it comes with a web interface you need to host yourself locally or via webhosting.
-In the case you don't want to host it, there can be made the whole visualisation solution with 3rd party IoT platform such as: Blynk, ThingsBoard, Ubidots or a ThingSpeak etc.
+In the case you don't want to host it, there can be made the whole visualisation solution with 3rd party IoT platform such as: <strong>Blynk, ThingsBoard, Ubidots or a ThingSpeak etc.</strong>
 On these platforms you can use a free to use plans or a pre-paid plan based on your preference.
 </p>
                 </div>
@@ -360,7 +360,7 @@ You can choose any time period within the graph and you can download it in .csv 
             </p>
 <p>
   The <strong>Weekly history page</strong> provides Line Area graph visualisation of battery level within a 7 days period. If the 12V battery has its own solar controller that is charging it, you can also see that voltage in the graph. Based on the records, you can see, in what day, there was sunny or rainy on your field.
-It is also possible to download whole graph or its custom cutout on demand in .csv .png .svg format for further analysis, own visualisation.
+It is also <strong>possible to download whole graph or its custom cutout on demand in .csv .png .svg format for further analysis, own visualisation.</strong>
 </p>
 
           </div>
@@ -392,7 +392,7 @@ It is also possible to download whole graph or its custom cutout on demand in .c
               Low battery instant alert
             </p>
            <p>
-  The <strong>Batmonitor</strong> can send a notification to your e-mail if low battery voltage is recorded, less than 11V. This notification can be sent once per 6 hours, to not disturb you often.
+  The <strong>Batmonitor can send a notification to your e-mail if low battery voltage is recorded, less than 11V right in the moment, when recorded.</strong> This notification can be sent once per 6 hours, to not disturb you often.
 This notification is early, providing enough time to do a physical check on your battery before it is discharged to the dangerous limits, less than 10,5V, which can lead to sulfation
 </p>
 
@@ -525,7 +525,7 @@ This notification is early, providing enough time to do a physical check on your
                 <i class="faq-icon bi bi-question-circle"></i>
 <h3>Do I need web hosting to run Batmonitor on my own server?</h3>
 <div class="faq-content">
-  <p>Yes, to run Batmonitor independently, you will need either local or internet <strong>web hosting</strong>. In order to execute the <strong>PHP scripts</strong> for Batmonitor, your server must have <strong>Apache (HTTPD)</strong> or <strong>NGINX</strong> installed.</p>
+  <p>Yes, to run Batmonitor independently, you will need either local or internet <strong>web hosting</strong>. In order to execute the <strong>PHP scripts</strong> for Batmonitor, your server must have <strong>Apache (HTTPD)</strong> or <strong>NGINX</strong> installed and MariaDB / MySQL for database system (phpMyAdmin recommend).</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -545,10 +545,10 @@ This notification is early, providing enough time to do a physical check on your
                 <i class="faq-icon bi bi-question-circle"></i>
                 <h3>What is the current consumption of the hardware?</h3>
 <div class="faq-content">
-  <p>As we are using the cheap hardware, current consumption is higher, mainly due Lolin32 is a devkit that has onboard led diodes, USB-UART converter, etc. 
+  <p>As we are using the cheap hardware, current consumption is higher, mainly due Lolin32 is a devkit that has onboard led diodes, USB-UART converter that are powered even in deep sleep mode. 
 Transmitter standardly has a current consumption around 1,95 mA and a receiver around 13 mA due the LoRa module in continuous receiver mode. 
 But as the devices has a onboard solar panel that is charging daily, it is not a problem to compensate that current consumption during the day.
-Receiver is able to work more than 6 days without charging using a solar panel.</p>
+Receiver is able to work more than 6 days without charging (2000 mAh battery).</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
