@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Monitorovanie napätia batérie IoT LoRa – Batmonitor</title>
+<meta name="keywords" content="batéria, napätie, monitorovanie, lora, lorawan, esp32, ra-02, sx1276, sx1278, mikrokontrolér, esp32c6, delič, adc, semtech">
+<meta name="description" content="Batmonitor je IoT riešenie na monitorovanie úrovne napätia batérie">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://your-iot.github.io/Batmonitor/sk/">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="../../sitemap.xml">
+
+<meta property="og:title" content="Monitorovanie napätia batérie IoT LoRa – Batmonitor">
+<meta property="og:description" content="Batmonitor je IoT riešenie na monitorovanie úrovne napätia batérie">
+<meta property="og:image" content="https://i.imgur.com/Y71LFD3.png">
+<meta property="og:url" content="https://your-iot.github.io/Batmonitor/">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monitorovanie napätia batérie IoT LoRa – Batmonitor">
+<meta name="twitter:description" content="Batmonitor je IoT riešenie na monitorovanie úrovne napätia batérie">
+<meta name="twitter:image" content="https://i.imgur.com/Y71LFD3.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Batmonitor",
+  "description": "Monitorovanie napätia batérie IoT LoRa – Batmonitor",
+  "url": "https://your-iot.github.io/Batmonitor/sk/",
+  "applicationCategory": "Utility",
+  "operatingSystem": "Windows, macOS, Android, iOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="../assets/css/main.css" rel="stylesheet">
+        <style>
+        #cookie-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        #cookie-bar button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+        #cookie-bar .agree {
+            background-color: #28a745;
+            color: white;
+        }
+        #cookie-bar .deny {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="index-page">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <h1 class="sitename">Batmonitor od <img src="https://i.imgur.com/ibpLxAB.png" alt="Your IoT within reach" title="Your IoT within reach"> </h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Domov</a></li>
+          <li><a href="#about">O produkte</a></li>
+          <li><a href="#features">Vlastnosti</a></li>
+          <li><a href="#gallery">Galéria</a></li>
+<!---
+<a href="pt/"><img src="https://i.imgur.com/PPmvgjk.png" alt="Portugal flag.png, 2,2kB" title="Portuguese (Brasil)" height="32" width="32"></a>
+<a href="ru/"><img src="https://i.imgur.com/tsafjHK.png" alt="Russia flag.png, 2,2kB" title="Russian" height="32" width="32"></a>
+<a href="it/"><img src="https://i.imgur.com/BXTLjVC.png" alt="Italy flag.png, 2,2kB" title="Italian" height="32" width="32"></a>
+<a href="sk/"><img src="https://i.imgur.com/eKWiNXh.png" alt="Slovak flag.png, 2,2kB" title="Slovakian" height="32" width="32"></a>
+<a href="es/"><img src="https://i.imgur.com/L964ws2.png" alt="Spain flag.png, 2,2kB" title="Spanish" height="32" width="32"></a>
+<a href="de/"><img src="https://i.imgur.com/XyttCEe.png" alt="Germany.png, 2,2kB" title="Germanian" height="32" width="32"></a>
+<a href="fr/"><img src="https://i.imgur.com/vX7NaZ7.png" alt="french.png, 2,2kB" title="French" height="32" width="32"></a>
+!--->
+          <a href="../"><img src="https://i.imgur.com/q5dsgvd.png" alt="England flag.png, 2,2kB" title="English" height="32" width="32"></a>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <img src="../assets/img/hero-bg-2.jpg" alt="Batmonitor" class="hero-bg">
+
+      <div class="container">
+        <div class="row gy-4 justify-content-between">
+          <div class="col-lg-4 order-lg-last hero-img" data-aos="zoom-out" data-aos-delay="100">
+            <img src="https://i.imgur.com/oPbOw9O.png" class="img-fluid" alt="Batmonitor's webapp responsive with smartphones, real-time data overview" title="Batmonitor's webapp responsive with smartphones, real-time data overview">
+<!---- class="img-fluid animated"--->
+          </div>
+
+          <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
+        <h2>Diaľkové monitorovanie 12V batérie</h2>
+        <p>Pre farmárov, chovateľov dobytka, poľnohospodárstvo a priemysel</p>
+            <div class="d-flex">
+              <a href="https://hladinomer.eu/LoRa" class="btn btn-primary rounded-pill">Vyskúšať Batmonitor</a>
+              <a href="https://www.jaspravim.sk/your-iot/lora-merac-napatia-baterie-2x-firmver-252571" class="btn btn-success rounded-pill">Plná verzia</a>           
+            
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+        <defs>
+          <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+        </defs>
+        <g class="wave1">
+          <use xlink:href="#wave-path" x="50" y="3"></use>
+        </g>
+        <g class="wave2">
+          <use xlink:href="#wave-path" x="50" y="0"></use>
+        </g>
+        <g class="wave3">
+          <use xlink:href="#wave-path" x="50" y="9"></use>
+        </g>
+      </svg>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-xl-center gy-5">
+
+          <div class="col-xl-5 content">
+<h2>Batmonitor: Riešenie monitorovania napätia batérie</h2>
+<p style="text-align: justify;">
+Batmonitor pozostáva z kombinácie párových LoRa zariadení a dashboardu - web aplikácie.
+LoRa vysielač vykonáva meranie napätia batérie v pravidelnom intervale 10 minút (štandardne 12V batéria - trakčná / autobatéria). Tieto údaje sa prenášajú prostredníctvom technológie LoRa v pásme 433 alebo 868 MHz.
+Prijímač po prijatí dát vykoná prenos skrz WiFi pre zápis dát do databázy web aplikácie Batmonitor.
+</p>
+<p style="text-align: justify;">
+Webové rozhranie Batmonitoru má jednoduchý responzívny dizajn, vhodný pre počítače alebo smartfóny.
+Poskytuje aktuálne a historické informácie o napätí batérie, vrátane technických údajov o signále (RSSI, SNR, odchýlka frekvencie).
+Tieto údaje je možné zobraziť v grafickej vizualizácii čiarovými grafmi (ApexCharts) pre rôzne časové obdobia.
+Vo webovom rozhraní je zahrnutá aktuálna LoRa konfigurácia, čo poskytuje dokumentáciu pre budúce rozširovanie systému, či testovanie v súkromnej sieti LoRa. </p>
+          </div>
+
+          <div class="col-xl-7">
+            <div class="row gy-4 icon-boxes">
+
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box">
+                  <i class="bi bi-collection-play"></i>
+                  <h3>Príklady použitia</h3>
+                  <p style="text-align: justify;">
+  Ideálne pre <strong>monitorovanie napätia batérie</strong> v aplikáciách <strong>elektrických oplotkov</strong>, <strong>UPS</strong>, <strong>ostrovných inštaláciách</strong>.
+  Vhodné aj pre rozšírenie o ďalšie <strong>IoT senzory</strong>, doplnkovú funkcionalitu, či samostatnú aplikáciu.
+</p>
+                </div>
+              </div> <!-- End Icon Box -->
+
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                  <i class="bi bi-wifi"></i>
+                  <h3>Podporované pásma</h3>
+                  <p style="text-align: justify;">
+Podporované frekvenčné pásmo LoRa závisí od použitého LoRa modulu a regiónu. V Európe je zvyčajne k dispozícii pásmo 868 a 433 MHz.
+Pre Kanadu 915 MHz, pre Áziu 923 MHz, v niektorých regiónoch aj 433 MHz.
+Pre pásmo 433 MHz je možné použiť modul SX1278 (RA-02), ktorý je dodávaný aj s konektorom u.FL. Pre kombinované pásma 433 MHz, 868 MHz, 915 MHz a 923 MHz odporúčam použiť SX1276, ktorý pokrýva všetky tieto pásma.
+Mduly s SX1276, napr. RFM95, bohužiaľ nemajú konektor u.FL pre pripojenie externej antény, drôtová anténa musí byť prispájkovaná priamo na pin.
+</p>
+                </div>
+              </div> <!-- End Icon Box -->
+
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                  <i class="bi bi-cpu-fill"></i>
+                  <h3>Vysielač a prijímač</h3>
+<p style="text-align: justify;">
+Vysielač a prijímač sú založené na open-source mikrokontroléri ESP32 (Lolin32) a LoRa module RA-02 (Semtech SX1278). Sú osadené na DPS 433_LoRa_Lolin32 z produkcie Your-IoT.
+Obe sú zariadenia sú programovo optimalizované pre režim nízkej spotreby. Vysielač pracuje v režime hlbokého spánku a je prebudený časovačom RTC pri plánovanom meraní a prenose dát skrz LoRa.
+Prijímač pracuje v režime ľahkého spánku a je prebudený externým zdrojom - signálom HIGH z prerušenia DIO0 na module RA-02 pri prijatí LoRa paketu.
+Vysielač má extra vodiče s rezistormi, ktoré sú pripojené k svorkám 12V batérie.
+Obe zariadenia majú krabičku s rozmermi 100x100 mm so solárnym panelom, lítiovú batériou a 3 dBi LoRa anténou. Nabíjací obvod je priamo súčasťou dosky Lolin32.
+</p>      
+ </div>
+              </div> <!-- End Icon Box -->
+
+             <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                  <i class="bi bi-hdd-rack-fill"></i>
+                  <h3>Iné platformy</h3>
+                  <p style="text-align: justify;">
+Systém Batmonitor je možné prispôsobiť na mieru. Štandardne je dodávaný s webovým rozhraním, ktoré si musíte hostovať lokálne alebo prostredníctvom webhostingu.
+V prípade, že Batmonitor nechcete hostovať, je možné vytvoriť riešenie pomocou IoT platformy tretej strany, ako napríklad: <b>Blynk, ThingsBoard, Ubidots alebo ThingSpeak</b> atď.
+Na týchto platformách môžete podľa svojich preferencií využívať bezplatné alebo predplatené programy.
+</p>
+                </div>
+              </div> <!-- End Icon Box -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item">
+              <i class="bi bi-currency-exchange" style="color: #ffbb2c;"></i>
+              <h3>Dostupný</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="features-item">
+              <i class="bi bi-pc" style="color: #5578ff;"></i>
+              <h3>Self-hosted</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="features-item">
+              <i class="bi bi-graph-up" style="color: #e80368;"></i>
+              <h3>Grafy na stiahnutie</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="features-item">
+              <i class="bi bi-cpu" style="color: #e361ff;"></i>
+              <h3>Open source HW</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="features-item">
+              <i class="bi bi-phone" style="color: #47aeff;"></i>
+              <h3>Responzívne</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="features-item">
+              <i class="bi bi-universal-access" style="color: #ffa76e;"></i>
+              <h3>Viacjazyčná podpora</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="700">
+            <div class="features-item">
+              <i class="bi bi-subtract" style="color: #11dbcf;"></i>
+              <h3>White labeling</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="800">
+            <div class="features-item">
+              <i class="bi bi-info-circle" style="color: #4233ff;"></i>
+              <h3>Podpora a spätná väzba</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+        
+
+        </div>
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+
+    <!-- Details Section -->
+    <section id="details" class="details section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Detaily</h2>
+        <div><span>Vyskúšajte </span> <span class="description-title">Batmonitor</span></div>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="https://i.imgur.com/Z6uQOqo.png" class="img-fluid" alt="Main page of Batmonitor. Actual battery level, the last 24 hour measurements within a graph" title="Main page of Batmonitor. Actual battery level, the last 24 hour measurements within a graph">
+          </div>
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
+            <h3>Hlavná stránka</h3>
+            <p class="fst-italic">
+              Aktuálne dáta napätia batérie
+            </p>
+<p>
+Hlavná stránka Batmonitora zobrazuje úroveň napätia batérie v reálnom čase vrátane grafického zobrazenia napätia batérie za posledných 24 hodín a posledných 10 záznamov napätia vrátane informácií o kvalite signálu v tabuľkovom prevedení.
+Môžete si vybrať ľubovoľné časové obdobie v rámci grafu a stiahnuť si ho vo formáte .csv alebo .png pre ďalšiu vizualizáciu, či vlastnú analýzu skrz iný softvér.
+</p>
+
+          </div>
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
+            <img src="https://i.imgur.com/fJsHwjP.png" class="img-fluid" alt="7 day graph visualisation of battery level recorded by LoRa receiver - ESP32" title="7 day graph visualisation of battery level recorded by LoRa receiver - ESP32">
+          </div>
+          <div class="col-md-7" data-aos="fade-up">
+            <h3>Týždňové záznamy</h3>
+            <p class="fst-italic">
+              Záznam dát za posledných 7 dné
+            </p>
+<p>
+<strong>Stránka s týždennou históriou</strong> poskytuje vizualizáciu úrovne nabitia batérie v priebehu 7 dní v podobe čiarového grafu. 
+Ak má 12V batéria vlastný solárny regulátor, ktorý ju nabíja, môžete v grafe vidieť aj toto napätie, prípadne len klesajúcu tendenciu, ak nemá nabíjací obvod. Na základe záznamov môžete vidieť, v ktorý deň bolo na vašom poli slnečno alebo daždivo.
+</p>
+
+          </div>
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="https://i.imgur.com/Rus3Saw.png" class="img-fluid" alt="LoRa configuration sheet, including base frequency, band, bandwidth, spreading factor." title="LoRa configuration sheet, including base frequency, band, bandwidth, spreading factor.">
+          </div>
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
+            <h3>Konfigurácia</h3>
+            <p class="fst-italic">
+              Prehľad LoRa nastavení riešenia
+            </p>
+<p>
+  Konfiguračná stránka umožňuje používateľom zobraziť aktuálne nastavenie siete LoRa vrátane frekvencie, šírky pásma, spreading faktoru, režimu CRC, kódovacieho pomeru alebo sync wordu, ktoré sa používa na filtrovanie akejkoľvek inej prevádzky v rámci frekvencie. Tieto informácie sú užitočné pre budúce aktualizácie v rámci systému a rozširovanie siete LoRa senzorovej.
+</p>
+
+          </div>
+        </div><!-- Features Item -->
+      
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
+            <img src="https://i.imgur.com/oZoPCbB.png" class="img-fluid" alt="Early notification by Batmonitor about low level of the measured battery" title="Early notification by Batmonitor about low level of the measured battery">
+          </div>
+          <div class="col-md-7" data-aos="fade-up">
+            <h3>E-mailová notifikácia</h3>
+            <p class="fst-italic">
+              Upozornenie na nízke napätie batérie
+            </p>
+           <p>
+Batmonitor zasiela e-mailové upozornenie ihneď, ako zaznamená nižšie napätie batérie ako 11V. Toto upozornenie sa odosiela raz za 6 hodín, aby vás často nerušilo.
+Toto upozornenie je včasné, čo poskytuje dostatok času na fyzickú kontrolu batérie skôr, ako sa vybije na nebezpečné hodnoty pod 10,5 V, čo by mohlo viesť k sulfatácii.
+</p>
+
+          </div>
+        </div><!-- Features Item -->
+
+
+
+
+
+
+      </div>
+
+    </section><!-- /Details Section -->
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Galéria</h2>
+        <div><span>Nahliadnite do </span> <span class="description-title">galérie</span></div>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-0">
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="https://i.imgur.com/f9kORxL.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/f9kORxL.png" alt="The actual data of battery level in Batmonitor LoRa web interface" title="The actual data of battery level in Batmonitor LoRa web interface" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="https://i.imgur.com/1liVTPE.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/1liVTPE.png" alt="Last week of measurements recorded of the battery voltage level within Batmoinitor" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="https://i.imgur.com/jYAiDkF.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/jYAiDkF.png" alt="RSSI and SNR - the main signal quality parameters recorded by 7 days within Batmonitor" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="https://i.imgur.com/5b3kp4l.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/5b3kp4l.png" alt="Frequency ofset compared to temperature change on the transmitter end due the charging and sunlight that warmed it up. Oscillator without temperature compensation" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="https://i.imgur.com/n3kmntA.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/n3kmntA.png" alt="LoRa configuration, base frequency, band, crc, sync word, etc" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+          
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="https://i.imgur.com/MOMeXhq.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/MOMeXhq.png" alt="LoRa device within a 100x100 mm enclosure IP54" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="https://i.imgur.com/9KMWeMB.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/9KMWeMB.png" alt="LoRa receiver - ESP32 + RA-02" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+       
+                  <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="https://i.imgur.com/OMcDAmE.png" class="glightbox" data-gallery="images-gallery">
+                <img src="https://i.imgur.com/OMcDAmE.png" alt="LoRa transmitter - ESP32 + RA-02" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Gallery Item -->
+        
+        
+        
+        
+        
+        
+        
+        </div>
+
+      </div>
+
+    </section><!-- /Gallery Section -->
+
+   
+
+   
+
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section light-background">
+
+      <div class="container-fluid">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
+
+            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
+              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+              <p>
+                The most asked question answered below
+              </p>
+            </div>
+
+            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
+
+              <div class="faq-item faq-active">
+                <i class="faq-icon bi bi-question-circle"></i>
+<h3>Potrebujem webhosting na spustenie Batmonitora na mojom vlastnom serveri?</h3>
+<div class="faq-content">
+  <p>Áno, na spustenie Batmonitora budete potrebovať buď lokálny, alebo internetový <strong>webhosting</strong>. Na spustenie <strong>PHP skriptov</strong> pre Batmonitor musí byť na vašom serveri nainštalovaný <strong>Apache (HTTPD)</strong> alebo <strong>NGINX</strong> a databázový systém MariaDB / MySQL (odporúča sa phpMyAdmin).</p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>Je ťažké nakonfigurovať webovú aplikáciu pre Batmonitor?</h3>
+<div class="faq-content">
+<p>Konfigurácia webovej aplikácie pre Batmonitor je jednoduchá vďaka <strong>návodu krok za krokom</strong> vo formáte PDF. Návod obsahuje aj informácie ohľadom importu súboru <strong>.sql</strong> do <strong>MySQL</strong> a konfiguráciu súboru <strong>connect.php</strong> s vašimi <strong>prihlasovacími údajmi k databáze</strong>.</p>
+</div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>Aká je spotreba hardvéru?</h3>
+<div class="faq-content">
+<p>Keďže používame dostupný hardvér, ktorý je lacný, spotreba prúdu je vyššia. Je to z dôvodu, že Lolin32 je vývojový kit a má trvale napájané niektoré časti, ako LED diódy a USB-UART prevodník a to aj v režime hlbokého spánku.
+Vysielač má štandardne spotrebu prúdu okolo 1,95 mA a prijímač okolo 13 mA kvôli modulu LoRa v režime konštantného prijímania dát. 
+Keďže zariadenia majú solárny panel, ktorý denne dobíja batériu, nie je problém kompenzovať túto spotrebu prúdu počas dňa. 
+Prijímač je schopný fungovať viac ako 6 dní bez dobíjania batérie (2000 mAh).</p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+               <h3>Je možné znížiť spotrebu prúdu?</h3>
+<div class="faq-content">
+<p>Áno, je tu možnosť zakúpenia iného hardvéru, ktorý je drahší. Your-IoT (@martinius96) má dosku plošných spojov XIAO_LoRa, ktorá vám umožňuje používať dosku XIAO (ESP32-C6, ESP32-C3, nRF52840, RP2040, MG24 atď.) so spotrebou prúdu v rozsahu od 2 do 90 μA.
+Táto doska má integrované rezistory priamo na sebe a konektor na pripojenie vodičov z batériových svoriek. Táto doska plošných spojov je tiež menšia v porovnaní so súčasnou (lacnejšou). </p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+               <h3>Aké jazykové mutácie ponúka rozhranie Batmonitor?</h3>
+<div class="faq-content">
+<p>Batmonitor ponúka vo svojom webovom rozhraní slovenský alebo anglický jazyk.
+</p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+<h3>Je možné dáta z Batmonitoru previesť do iného systému?</h3>
+<div class="faq-content">
+<p>Áno, Batmonitor poskytuje <strong>výstup JSON</strong>, ktorý je prístupný prostredníctvom GET požiadavky, čo umožňuje získať dáta vrátane časových značiek.
+</p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+                            <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+<h3>Ako sa nadväzuje komunikácia medzi serverom a prijímačom LoRa?</h3>
+<div class="faq-content">
+<p><strong>Uzol LoRa komunikuje</strong> s Batmonitorom pomocou <strong>protokolu HTTPS</strong>. Spúšťačom pre túto akciu je, keď prijímač LoRa prijme údaje o napätí batérie (štandardne raz za 10 minút), pripojí sa k prednastavenej WiFi a vykoná požiadavku HTTPS POST.
+Dáta sa zapisujú do databázy prostredníctvom súboru PHP, na ktorý sa požiadavka vykoná.</p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+                            <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+<h3>Sú prenášané dáta skrz LoRa šifrované?</h3>
+<div class="faq-content">
+<p><strong>Dáta nie sú šifrované.</strong> Nie je to potrebné vzhľadom na to, že sa neprenášajú citlivé údaje. Šifrovanie je možné implementovať.
+Šifrovanie však predĺži celkový uptime zariadenia a úmerne skráti výdrž batérie.</p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              
+              <div class="faq-item">
+                <i class="faq-icon bi bi-question-circle"></i>
+<h3>Ako vysielač vykonáva meranie?</h3>
+<div class="faq-content">
+<p>Vysielač má delič napätia, štandardne s pomerom 1:5,7 pre porkytie rozsahu 0 až 15V. Na vstupe deliča napätia je trvalé napätie batérie a na jeho výstupe je napätie znížené pre bezpečný rozsah ESP32.
+ESP32 prečíta hodnotu ADC, potom ju prevedie na milivolty a tiež vypočíta pôvodnú (vstupnú) hodnotu napätia batérie. Táto hodnota sa vysiela cez LoRa.</p>
+</div>
+
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 order-1 order-lg-2">
+            <img src="../assets/img/faq.jpg" class="img-fluid" alt="Available source codes for ESP32 Espressif Systems microcontroller for ultrasonic IoT sensor node application" title="Available source codes for ESP32 Espressif Systems microcontroller for ultrasonic IoT sensor node application" data-aos="zoom-in" data-aos-delay="100">
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Faq Section -->
+
+    
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Batmonitor od <img src="https://i.imgur.com/ibpLxAB.png" alt="Your IoT within reach"></span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>Slovensko, SK Európa</p>
+            <p><strong>E-mail:</strong> <span>martin.ch.youriot (at) gmail.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.facebook.com/your.iot.systems"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.youtube.com/@Your-IoT-w4b"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Zaujímavé odkazy</h4>
+          <ul>
+            <li><a href="https://hladinomer.eu/LoRa">Batmonitor rozhranie</a></li>
+
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Dokumentácia</h4>
+          <ul>
+            <li><a href="#">V riešení</a></li>         
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Iné projekty</h4>
+          <ul>
+            <li><a href="https://your-iot.github.io/DOMINATOR/sk/">RFID DOMINATOR</a></li>
+<li><a href="https://your-iot.github.io/Watmonitor/sk/">Hladinomer</a></li>
+            <li><a href="https://martinius96.github.io/WiFi-termostat/">WiFi termostat</a></li>        
+          </ul>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Bootslander</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
