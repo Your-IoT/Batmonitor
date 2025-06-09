@@ -174,9 +174,9 @@
           <div class="col-xl-5 content">
 <h2>Batmonitor: LoRa voltage level monitoring solution</h2>
 <p style="text-align: justify;">
-Batmonitor comes with a combination of the LoRa based devices and a dashboard webapp.
-There is a transmitter LoRa node which is performing battery level measurement once per 10 minutes (standardly 12V battery, such as traction battery, car battery). These datas are transmitted via LoRa technology on 433 or 868 MHz LoRa band.
-Receiver is able to receive these data and transmit them to the database of the webapp via WiFi connectivity. 
+Batmonitor comes with a combination of a pair of LoRa based devices and a dashboard webapp.
+There is a transmitter LoRa node which is performing battery level measurement once per 10 minutes (standardly it is a 12V battery, such as traction battery, car battery). These datas are transmitted via LoRa technology on 433 or 868 MHz LoRa band.
+The receiver is able to receive these data and transmit them to the Batmonitor's database of the webapp via WiFi. 
 </p>
 <p style="text-align: justify;">
 Web interface of Batmonitor comes with lightweight responsive design, suitable for computers or smartphones aswell.
@@ -218,7 +218,7 @@ There are some modules with SX1276, e.g. RFM95, unfortunately there isn't possib
                   <i class="bi bi-cpu-fill"></i>
                   <h3>Transmitter & receiver</h3>
 <p style="text-align: justify;">
-Transmitter and receiver are based on a open-source microcontroller ESP32 (Lolin32) and LoRa module RA-02 (SX1278) and comes with a custom PCB 433_LoRa_Lolin32 created by @martinius96 - Your-IoT.
+Transmitter and receiver are based on a open-source microcontroller ESP32 (Lolin32) and LoRa module RA-02 (Semtech SX1278) and comes with a custom PCB 433_LoRa_Lolin32 created by @martinius96 - Your-IoT.
 Both are low-power devices, a transmitter is working in deep sleep mode waked up by a RTC timer, when voltage measurement and LoRa transmission is scheduled.
 A receiver is working in light sleep mode, waked up via external source - HIGH signal from a DIO0 interrupt on a RA-02 module when LoRa packet is received.
 Transmitter has extra wires with resistors, which are attached to a 12V battery terminals.
@@ -331,7 +331,7 @@ On these platforms you can use a free to use plans or a pre-paid plan based on y
       <div class="container">
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="https://i.imgur.com/Z6uQOqo.png" class="img-fluid" alt="Overview page of Batmonitor's webapp. Provides real-time data about battery voltage level" title="Overview page of Batmonitor's webapp. Provides real-time data about battery voltage level">
+            <img src="https://i.imgur.com/Z6uQOqo.png" class="img-fluid" alt="Main page of Batmonitor. Actual battery level, the last 24 hour measurements within a graph" title="Main page of Batmonitor. Actual battery level, the last 24 hour measurements within a graph">
           </div>
           <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
             <h3>Overview page</h3>
@@ -348,7 +348,7 @@ You can choose any time period within the graph and you can download it in .csv 
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
-            <img src="https://i.imgur.com/fJsHwjP.png" class="img-fluid" alt="Historical measurements within Batmonitor's system. Possible to delete value and also to browse through records or maximum and minimum values per week, month, day" title="Historical measurements within Batmonitor's system. Possible to delete value and also to browse through records or maximum and minimum values per week, month, day">
+            <img src="https://i.imgur.com/fJsHwjP.png" class="img-fluid" alt="7 day graph visualisation of battery level recorded by LoRa receiver - ESP32" title="7 day graph visualisation of battery level recorded by LoRa receiver - ESP32">
           </div>
           <div class="col-md-7" data-aos="fade-up">
             <h3>Weekly record</h3>
@@ -365,7 +365,7 @@ It is also <strong>possible to download whole graph or its custom cutout on dema
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="https://i.imgur.com/Rus3Saw.png" class="img-fluid" alt="Line Area graphs by ApexCharts.js providing water level measurements taken in time with history up to 1 year ago." title="Line Area graphs by ApexCharts.js providing water level measurements taken in time with history up to 1 year ago.">
+            <img src="https://i.imgur.com/Rus3Saw.png" class="img-fluid" alt="LoRa configuration sheet, including base frequency, band, bandwidth, spreading factor." title="LoRa configuration sheet, including base frequency, band, bandwidth, spreading factor.">
           </div>
           <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
             <h3>Configuration</h3>
@@ -381,7 +381,7 @@ It is also <strong>possible to download whole graph or its custom cutout on dema
       
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
-            <img src="https://i.imgur.com/oZoPCbB.png" class="img-fluid" alt="Automatiaclly pre-generated source code for ESP32 (Espressif Systems) microcontroller with WiFi or PHY Ethernet connection method to the Watmonitor's interface via HTTP or HTTPS" title="Automatiaclly pre-generated source code for ESP32 (Espressif Systems) microcontroller with WiFi or PHY Ethernet connection method to the Watmonitor's interface via HTTP or HTTPS">
+            <img src="https://i.imgur.com/oZoPCbB.png" class="img-fluid" alt="Early notification by Batmonitor about low level of the measured battery" title="Early notification by Batmonitor about low level of the measured battery">
           </div>
           <div class="col-md-7" data-aos="fade-up">
             <h3>E-mail notification</h3>
@@ -421,7 +421,7 @@ This notification is early, providing enough time to do a physical check on your
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="https://i.imgur.com/f9kORxL.png" class="glightbox" data-gallery="images-gallery">
-                <img src="https://i.imgur.com/f9kORxL.png" alt="Overview page of water level monitor - Watmonitor. Suitable for real-time water level informations" title="Overview page of water level monitor - Watmonitor. Suitable for real-time water level informations" class="img-fluid">
+                <img src="https://i.imgur.com/f9kORxL.png" alt="The actual data of battery level in Batmonitor LoRa web interface" title="The actual data of battery level in Batmonitor LoRa web interface" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -429,7 +429,7 @@ This notification is early, providing enough time to do a physical check on your
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="https://i.imgur.com/1liVTPE.png" class="glightbox" data-gallery="images-gallery">
-                <img src="https://i.imgur.com/1liVTPE.png" alt="Watmonitor's History page with water level and water volume measurements" class="img-fluid">
+                <img src="https://i.imgur.com/1liVTPE.png" alt="Last week of measurements recorded of the battery voltage level within Batmoinitor" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -437,7 +437,7 @@ This notification is early, providing enough time to do a physical check on your
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="https://i.imgur.com/jYAiDkF.png" class="glightbox" data-gallery="images-gallery">
-                <img src="https://i.imgur.com/jYAiDkF.png" alt="Watmonitor Area Line graphs showing water level in time period. Powered by ApexCharts" class="img-fluid">
+                <img src="https://i.imgur.com/jYAiDkF.png" alt="RSSI and SNR - the main signal quality parameters recorded by 7 days within Batmonitor" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -445,7 +445,7 @@ This notification is early, providing enough time to do a physical check on your
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="https://i.imgur.com/5b3kp4l.png" class="glightbox" data-gallery="images-gallery">
-                <img src="https://i.imgur.com/5b3kp4l.png" alt="Highlighted source code for ESP32 micontroller with WiFi or PHY Ethernet support" class="img-fluid">
+                <img src="https://i.imgur.com/5b3kp4l.png" alt="Frequency ofset compared to temperature change on the transmitter end due the charging and sunlight that warmed it up. Oscillator without temperature compensation" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -453,7 +453,7 @@ This notification is early, providing enough time to do a physical check on your
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="https://i.imgur.com/n3kmntA.png" class="glightbox" data-gallery="images-gallery">
-                <img src="https://i.imgur.com/n3kmntA.png" alt="Wiring diagram compatible with ESP32, Arduino, ESP8266. Sensor nodes for Watmonitor webapp" class="img-fluid">
+                <img src="https://i.imgur.com/n3kmntA.png" alt="LoRa configuration, base frequency, band, crc, sync word, etc" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -461,7 +461,7 @@ This notification is early, providing enough time to do a physical check on your
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="https://i.imgur.com/MOMeXhq.png" class="glightbox" data-gallery="images-gallery">
-                <img src="https://i.imgur.com/MOMeXhq.png" alt="Wiring diagram compatible with ESP32, Arduino, ESP8266. Sensor nodes for Watmonitor webapp" class="img-fluid">
+                <img src="https://i.imgur.com/MOMeXhq.png" alt="LoRa device within a 100x100 mm enclosure IP54" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
