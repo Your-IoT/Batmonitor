@@ -208,7 +208,7 @@ V závislosti od prostredia je dosah Batmonitor LoRa systému niekoľko stoviek 
 Podporované frekvenčné pásmo LoRa závisí od použitého LoRa modulu a regiónu. V Európe je zvyčajne k dispozícii pásmo 868 a 433 MHz.
 Pre Kanadu 915 MHz, pre Áziu 923 MHz, v niektorých regiónoch aj 433 MHz.
 Pre pásmo 433 MHz je možné použiť modul SX1278 (RA-02), ktorý je dodávaný aj s konektorom u.FL. Pre kombinované pásma 433 MHz, 868 MHz, 915 MHz a 923 MHz odporúčam použiť SX1276, ktorý pokrýva všetky tieto pásma.
-Mduly s SX1276, napr. RFM95, bohužiaľ nemajú konektor u.FL pre pripojenie externej antény, drôtová anténa musí byť prispájkovaná priamo na pin.
+Moduly s SX1276, napr. RFM95, bohužiaľ nemajú konektor u.FL pre pripojenie externej antény, drôtová anténa musí byť prispájkovaná priamo na pin.
 </p>
                 </div>
               </div> <!-- End Icon Box -->
@@ -614,7 +614,7 @@ Dáta sa zapisujú do databázy prostredníctvom súboru PHP, na ktorý sa poži
                 <i class="faq-icon bi bi-question-circle"></i>
 <h3>Ako vysielač vykonáva meranie?</h3>
 <div class="faq-content">
-<p>Vysielač má delič napätia, štandardne s pomerom 1:5,7 pre porkytie rozsahu 0 až 15V. Na vstupe deliča napätia je trvalé napätie batérie a na jeho výstupe je napätie znížené pre bezpečný rozsah ESP32.
+<p>Vysielač má delič napätia, štandardne s pomerom 1:5,7 pre pokrytie rozsahu 0 až 15V. Na vstupe deliča napätia je trvalé napätie batérie a na jeho výstupe je napätie znížené pre bezpečný rozsah ESP32.
 ESP32 prečíta hodnotu ADC, potom ju prevedie na milivolty a tiež vypočíta pôvodnú (vstupnú) hodnotu napätia batérie. Táto hodnota sa vysiela cez LoRa.</p>
 </div>
 
