@@ -173,11 +173,12 @@
 <h2>Batmonitor: Riešenie monitorovania napätia batérie</h2>
 <p style="text-align: justify;">
 Batmonitor pozostáva z kombinácie párových LoRa zariadení a dashboardu - web aplikácie.
-LoRa vysielač vykonáva meranie napätia batérie v pravidelnom intervale 10 minút (štandardne 12V batéria - trakčná / autobatéria). Tieto údaje sa prenášajú prostredníctvom technológie LoRa v pásme 433 alebo 868 MHz.
-Prijímač po prijatí dát vykoná prenos skrz WiFi pre zápis dát do databázy web aplikácie Batmonitor.
+LoRa vysielač vykonáva meranie napätia 12V batérie, ktorá napája elektrický oplotok (generátor vysokonapäťových impulzov). 
+Meranie sa vykonáva v intervale raz za 10 minút. Tieto údaje sa prenášajú prostredníctvom technológie LoRa v pásme 433 alebo 868 MHz (CHIRP).
+Prijímač po prijatí dát dokáže skrz WiFi dáta zapísať do databázy, resp. webaplikácie Batmonitor.
 </p>
 <p style="text-align: justify;">
-Webové rozhranie Batmonitoru má jednoduchý responzívny dizajn, vhodný pre počítače alebo smartfóny.
+Webové rozhranie Batmonitora má jednoduchý responzívny dizajn, vhodný pre počítače alebo smartfóny.
 Poskytuje aktuálne a historické informácie o napätí batérie, vrátane technických údajov o signále (RSSI, SNR, odchýlka frekvencie).
 Tieto údaje je možné zobraziť v grafickej vizualizácii čiarovými grafmi (ApexCharts) pre rôzne časové obdobia.
 Vo webovom rozhraní je zahrnutá aktuálna LoRa konfigurácia, čo poskytuje dokumentáciu pre budúce rozširovanie systému, či testovanie v súkromnej sieti LoRa. </p>
@@ -191,9 +192,9 @@ Vo webovom rozhraní je zahrnutá aktuálna LoRa konfigurácia, čo poskytuje do
                   <i class="bi bi-collection-play"></i>
                   <h3>Príklady použitia</h3>
                   <p style="text-align: justify;">
-  Ideálne pre <strong>monitorovanie napätia batérie</strong> v aplikáciách <strong>elektrických oplotkov</strong>, <strong>UPS</strong>, <strong>ostrovných inštaláciách</strong>.
+  Ideálne pre <strong>monitorovanie napätia batérie</strong> v aplikáciách <strong>elektrických oplotkov</strong>, <strong>UPS</strong>, <strong>ostrovných inštaláciách, malých veterných elektráni a iných</strong>.
   Vhodné aj pre rozšírenie o ďalšie <strong>IoT senzory</strong>, doplnkovú funkcionalitu, či samostatnú aplikáciu, pričom je možné implementovať viacero vysielačov a jedne prijímač, ktorý funguje ako "brána". 
-V závislosti od prostredia je dosah Batmonitor LoRa systému niekoľko stoviek metrov až jednotky kilometrov.
+V závislosti od prostredia je dosah Batmonitor LoRa systému niekoľko stoviek metrov až jednotky kilometrov (predpoklad priamej viditeľnosti).
 </p>
                 </div>
               </div> <!-- End Icon Box -->
@@ -217,10 +218,10 @@ Moduly s SX1276, napr. RFM95, bohužiaľ nemajú konektor u.FL pre pripojenie ex
                   <h3>Vysielač a prijímač</h3>
 <p style="text-align: justify;">
 Vysielač a prijímač sú založené na open-source mikrokontroléri ESP32 (Lolin32) a LoRa module RA-02 (Semtech SX1278). Sú osadené na DPS 433_LoRa_Lolin32 z produkcie Your-IoT.
-Obe sú zariadenia sú programovo optimalizované pre režim nízkej spotreby. Vysielač pracuje v režime hlbokého spánku a je prebudený časovačom RTC pri plánovanom meraní a prenose dát skrz LoRa.
-Prijímač pracuje v režime ľahkého spánku a je prebudený externým zdrojom - signálom HIGH z prerušenia DIO0 na module RA-02 pri prijatí LoRa paketu.
-Vysielač má extra vodiče s rezistormi, ktoré sú pripojené k svorkám 12V batérie.
-Obe zariadenia majú krabičku s rozmermi 100x100 mm so solárnym panelom, lítiovú batériou a 3 dBi LoRa anténou. Nabíjací obvod je priamo súčasťou dosky Lolin32.
+Oba zariadenia sú programovo optimalizované pre režim nízkej spotreby. Vysielač pracuje v režime hlbokého spánku a je prebudený časovačom RTC pri plánovanom meraní a prenose dát skrz LoRa.
+Prijímač pracuje v režime plytkého spánku a je prebudený externým zdrojom - signálom HIGH z prerušenia DIO0 na module RA-02 pri prijatí LoRa paketu.
+Vysielač má extra vodiče s rezistormi (napäťový delič), ktoré sú pripojené k svorkám 12V batérie.
+Obe zariadenia majú krabičku s rozmermi 100x100 mm so solárnym panelom so špičkovým výkonom 1,2 Wp. Obsahujú lítiovú batériu a LoRa anténu. Nabíjací obvod je priamo súčasťou dosky Lolin32 (TP4056 / ekvivalent).
 </p>      
  </div>
               </div> <!-- End Icon Box -->
@@ -230,9 +231,8 @@ Obe zariadenia majú krabičku s rozmermi 100x100 mm so solárnym panelom, líti
                   <i class="bi bi-hdd-rack-fill"></i>
                   <h3>Iné platformy</h3>
                   <p style="text-align: justify;">
-Systém Batmonitor je možné prispôsobiť na mieru. Štandardne je dodávaný s webovým rozhraním, ktoré si musíte hostovať lokálne alebo prostredníctvom webhostingu.
-V prípade, že Batmonitor nechcete hostovať, je možné vytvoriť riešenie pomocou IoT platformy tretej strany, ako napríklad: <b>Blynk, ThingsBoard, Ubidots alebo ThingSpeak</b> atď.
-Na týchto platformách môžete podľa svojich preferencií využívať bezplatné alebo predplatené programy.
+Systém Batmonitor, respektíve dáta zneho je možné integrovať aj do inej platformy napr. cURL volaním, či využitím JSON API endpointom.
+Batmonitor sa štandardne hostuje na vlastnom lokálnom serveri, alebo na webhostingu. V zmysle integrácie je možné využiť rôzne platformy, napríklad: <b>Blynk, ThingsBoard, Ubidots alebo ThingSpeak</b>.
 </p>
                 </div>
               </div> <!-- End Icon Box -->
