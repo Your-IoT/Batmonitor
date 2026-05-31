@@ -96,13 +96,13 @@
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <h1 class="sitename">Batmonitor od <img src="https://i.imgur.com/ibpLxAB.png" alt="Your IoT within reach" title="Your IoT within reach"> </h1>
+        <h1 class="sitename">Batmonitor</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Domov</a></li>
-          <li><a href="#about">O produkte</a></li>
+          <li><a href="#about">O</a></li>
           <li><a href="#features">Vlastnosti</a></li>
           <li><a href="#gallery">Galéria</a></li>
 <!---
@@ -131,15 +131,15 @@
       <div class="container">
         <div class="row gy-4 justify-content-between">
           <div class="col-lg-4 order-lg-last hero-img" data-aos="zoom-out" data-aos-delay="100">
-            <img src="https://i.imgur.com/oPbOw9O.png" class="img-fluid" alt="Batmonitor's webapp responsive with smartphones, real-time data overview" title="Batmonitor's webapp responsive with smartphones, real-time data overview">
+            <img src="https://i.imgur.com/oPbOw9O.png" class="img-fluid" alt="Responzívna webaplikácia Batmonitor vhodná pre smartfóny, real-time prehľad dát" title="Responzívna webaplikácia Batmonitor vhodná pre smartfóny, real-time prehľad dát">
 <!---- class="img-fluid animated"--->
           </div>
 
           <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
-        <h2>Diaľkové monitorovanie 12V batérie</h2>
-        <p>Pre farmárov, chovateľov dobytka, poľnohospodárstvo a priemysel</p>
+        <h2>Diaľkové monitorovanie napätia (batérie)</h2>
+        <p>Pre IoT nadšencov, chovateľov dobytka, poľnohospodárov, priemysel</p>
             <div class="d-flex">
-              <a href="https://hladinomer.eu/LoRa" class="btn btn-primary rounded-pill">Vyskúšať Batmonitor</a>
+              <a href="https://hladinomer.eu/LoRa" class="btn btn-primary rounded-pill">DEMO Batmonitor</a>
             </div>
           </div>
 
@@ -170,18 +170,18 @@
         <div class="row align-items-xl-center gy-5">
 
           <div class="col-xl-5 content">
-<h2>Batmonitor: Riešenie monitorovania napätia batérie</h2>
+<h2>Batmonitor - vzdialené monitorovanie napätia</h2>
 <p style="text-align: justify;">
-Batmonitor pozostáva z kombinácie párových LoRa zariadení a dashboardu - web aplikácie.
-LoRa vysielač vykonáva meranie napätia 12V batérie, ktorá napája elektrický oplotok (generátor vysokonapäťových impulzov). 
-Meranie sa vykonáva v intervale raz za 10 minút. Tieto údaje sa prenášajú prostredníctvom technológie LoRa v pásme 433 alebo 868 MHz (CHIRP).
-Prijímač po prijatí dát dokáže skrz WiFi dáta zapísať do databázy, resp. webaplikácie Batmonitor.
+Batmonitor je systém určený na vzdialené monitorovania napätia batérie (alebo iných zdrojov).
+Pozostáva z párových LoRa zariadení - vysielača a prijímača, webového rozhrania pre archiváciu a vizualizáciu dát.  
+LoRa vysielač vykoná raz za 10 minút meranie a dáta odošle do éteru. LoRa prijímač dáta príjme a skrz WiFi konektivitu prepošle do webaplikácie Batmonitor.
 </p>
 <p style="text-align: justify;">
+Dáta sa prenášajú na 433, alebo 868 MHz nosnej frekvencii s CHIRP (LoRa) moduláciou.
 Webové rozhranie Batmonitora má jednoduchý responzívny dizajn, vhodný pre počítače alebo smartfóny.
 Poskytuje aktuálne a historické informácie o napätí batérie, vrátane technických údajov o signále (RSSI, SNR, odchýlka frekvencie).
-Tieto údaje je možné zobraziť v grafickej vizualizácii čiarovými grafmi (ApexCharts) pre rôzne časové obdobia.
-Vo webovom rozhraní je zahrnutá aktuálna LoRa konfigurácia, čo poskytuje dokumentáciu pre budúce rozširovanie systému, či testovanie v súkromnej sieti LoRa. </p>
+Tieto údaje je možné zobraziť v grafickej vizualizácii čiarovými grafmi (ApexCharts) pre rôzne časové obdobia s možnosťou exportu vo formátoch .svg, .png, .csv pre účel ďalšej analýzy / vizualizácie v inom softvéri.
+</p>
           </div>
 
           <div class="col-xl-7">
@@ -192,9 +192,8 @@ Vo webovom rozhraní je zahrnutá aktuálna LoRa konfigurácia, čo poskytuje do
                   <i class="bi bi-collection-play"></i>
                   <h3>Príklady použitia</h3>
                   <p style="text-align: justify;">
-  Ideálne pre <strong>monitorovanie napätia batérie</strong> v aplikáciách <strong>elektrických oplotkov</strong>, <strong>UPS</strong>, <strong>ostrovných inštaláciách, malých veterných elektráni a iných</strong>.
-  Vhodné aj pre rozšírenie o ďalšie <strong>IoT senzory</strong>, doplnkovú funkcionalitu, či samostatnú aplikáciu, pričom je možné implementovať viacero vysielačov a jedne prijímač, ktorý funguje ako "brána". 
-V závislosti od prostredia je dosah Batmonitor LoRa systému niekoľko stoviek metrov až jednotky kilometrov (predpoklad priamej viditeľnosti).
+  Ideálne pre <strong>monitorovanie napätia batérie</strong> v aplikáciách <strong>elektrických oplotkov</strong>, <strong>UPS</strong>, <strong>ostrovných inštaláciách, malých veterných elektrární..</strong>.
+  Vhodné aj pre rozšírenie o ďalšie <strong>IoT senzory</strong>, doplnkovú funkcionalitu, či samostatnú aplikáciu, pričom je možné implementovať viacero vysielačov a jedne prijímač, ktorý funguje ako "brána", prípadne aj obojsmernú half-duplexnú komunikáciu. 
 </p>
                 </div>
               </div> <!-- End Icon Box -->
@@ -205,9 +204,7 @@ V závislosti od prostredia je dosah Batmonitor LoRa systému niekoľko stoviek 
                   <h3>Podporované pásma</h3>
                   <p style="text-align: justify;">
 Podporované frekvenčné pásmo LoRa závisí od použitého LoRa modulu a regiónu. V Európe je zvyčajne k dispozícii pásmo 868 a 433 MHz.
-Pre Kanadu 915 MHz, pre Áziu 923 MHz, v niektorých regiónoch aj 433 MHz.
-Pre pásmo 433 MHz je možné použiť modul SX1278 (RA-02), ktorý je dodávaný aj s konektorom u.FL. Pre kombinované pásma 433 MHz, 868 MHz, 915 MHz a 923 MHz odporúčam použiť SX1276, ktorý pokrýva všetky tieto pásma.
-Moduly s SX1276, napr. RFM95, bohužiaľ nemajú konektor u.FL pre pripojenie externej antény, drôtová anténa musí byť prispájkovaná priamo na pin.
+Pre pásmo 433 MHz je možné použiť modul SX1278 (RA-02), ktorý je dodávaný aj s konektorom u.FL. Pre kombinované pásma 433 MHz, 868 MHz, 915 MHz a 923 MHz odporúčam použiť SX1276 (RFM95), ktorý pokrýva všetky tieto pásma.
 </p>
                 </div>
               </div> <!-- End Icon Box -->
@@ -218,11 +215,9 @@ Moduly s SX1276, napr. RFM95, bohužiaľ nemajú konektor u.FL pre pripojenie ex
                   <h3>Vysielač a prijímač</h3>
 <p style="text-align: justify;">
 Vysielač a prijímač sú založené na open-source mikrokontroléri ESP32 (Lolin32) a LoRa module RA-02 (Semtech SX1278). Sú osadené na DPS 433_LoRa_Lolin32 z produkcie Your-IoT.
-Oba zariadenia sú programovo optimalizované pre režim nízkej spotreby. Vysielač pracuje v režime hlbokého spánku a je prebudený časovačom RTC pri plánovanom meraní a prenose dát skrz LoRa.
-Prijímač pracuje v režime plytkého spánku a je prebudený externým zdrojom - signálom HIGH z prerušenia DIO0 na module RA-02 pri prijatí LoRa paketu.
-Vysielač má extra vodiče s rezistormi (napäťový delič), ktoré sú pripojené k svorkám 12V batérie.
-Obe zariadenia majú krabičku s rozmermi 100x100 mm so solárnym panelom so špičkovým výkonom 1,2 Wp. Obsahujú lítiovú batériu a LoRa anténu. Nabíjací obvod je priamo súčasťou dosky Lolin32 (TP4056 / ekvivalent).
-</p>      
+Oba zariadenia sú programovo optimalizované pre nízkopríkonový režim low-power. Vysielač pracuje v režime hlbokého spánku a je prebudený časovačom RTC pri plánovanom meraní a prenose dát skrz LoRa, k batérii je pripojený skrz napäťový delič.
+Prijímač pracuje v režime ľahkého spánku a je prebudený externým zdrojom - signálom HIGH z prerušenia DIO0 na module RA-02 pri prijatí LoRa paketu.
+Zariadenie môže byť vybavené solárnym panelom a krabičkou. Lolin32 disponuje vstavaným nabíjacím obvodom pre Li-Ion / Li-pol batérie.</p>      
  </div>
               </div> <!-- End Icon Box -->
 
@@ -231,8 +226,8 @@ Obe zariadenia majú krabičku s rozmermi 100x100 mm so solárnym panelom so šp
                   <i class="bi bi-hdd-rack-fill"></i>
                   <h3>Iné platformy</h3>
                   <p style="text-align: justify;">
-Systém Batmonitor, respektíve dáta zneho je možné integrovať aj do inej platformy napr. cURL volaním, či využitím JSON API endpointom.
-Batmonitor sa štandardne hostuje na vlastnom lokálnom serveri, alebo na webhostingu. V zmysle integrácie je možné využiť rôzne platformy, napríklad: <b>Blynk, ThingsBoard, Ubidots alebo ThingSpeak</b>.
+Systém Batmonitor je možné integrovať aj do iných systémov napríklad cURL volaním, či s využitím JSON API endpointu.
+Batmonitor sa štandardne hostuje na vlastnom lokálnom serveri, alebo na webhostingu. V zmysle integrácie je možné využiť rôzne platformy, napríklad: <b>Blynk, ThingsBoard, Ubidots alebo ThingSpeak</b>...
 </p>
                 </div>
               </div> <!-- End Icon Box -->
@@ -513,9 +508,9 @@ Toto upozornenie je včasné, čo poskytuje dostatok času na fyzickú kontrolu 
           <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
 
             <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
-              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+              <h3><span>Často kladené </span><strong>otázky</strong></h3>
               <p>
-                The most asked question answered below
+                Odpovede na najčastejšie otázky
               </p>
             </div>
 
@@ -544,10 +539,10 @@ Toto upozornenie je včasné, čo poskytuje dostatok času na fyzickú kontrolu 
                 <i class="faq-icon bi bi-question-circle"></i>
                 <h3>Aká je spotreba hardvéru?</h3>
 <div class="faq-content">
-<p>Keďže používame dostupný hardvér, ktorý je lacný, spotreba prúdu je vyššia. Je to z dôvodu, že Lolin32 je vývojový kit a má trvale napájané niektoré časti, ako LED diódy a USB-UART prevodník a to aj v režime hlbokého spánku.
-Vysielač má štandardne spotrebu prúdu okolo 1,95 mA a prijímač okolo 13 mA kvôli modulu LoRa v režime konštantného prijímania dát. 
-Keďže zariadenia majú solárny panel, ktorý denne dobíja batériu, nie je problém kompenzovať túto spotrebu prúdu počas dňa. 
-Prijímač je schopný fungovať viac ako 6 dní bez dobíjania batérie (2000 mAh).</p>
+<p>
+Ak sa rozhodnete pre dostupný hardvér, napríklad Lolin32, musíte počítať s tým, že ide o devkit, ktorý má trvalo napájané isté časti. Z toho dôvodu má vysielač v režime deep sleep spotrebu 1,95 mAh a prijímač 13 mAh v režime light sleep.
+V prípade, že zariadenie má solárny panel a ten je dostatočne dlhú dobu vystavený slnečnému žiareniu, dokáže kompenzovať aj dennú spotrebu.
+  Prijímač je schopný fungovať viac ako 6 dní bez dobíjania batérie (2000 mAh).</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -557,8 +552,10 @@ Prijímač je schopný fungovať viac ako 6 dní bez dobíjania batérie (2000 m
                 <i class="faq-icon bi bi-question-circle"></i>
                <h3>Je možné znížiť spotrebu prúdu?</h3>
 <div class="faq-content">
-<p>Áno, je tu možnosť zakúpenia iného hardvéru, ktorý je drahší. Your-IoT (@martinius96) má dosku plošných spojov XIAO_LoRa, ktorá vám umožňuje používať dosku XIAO (ESP32-C6, ESP32-C3, nRF52840, RP2040, MG24 atď.) so spotrebou prúdu v rozsahu od 2 do 90 μA.
-Táto doska má integrované rezistory priamo na sebe a konektor na pripojenie vodičov z batériových svoriek. Táto doska plošných spojov je tiež menšia v porovnaní so súčasnou (lacnejšou). </p>
+<p>Áno, je tu možnosť zakúpenia iného hardvéru, ktorý je drahší. Napríklad kit XIAO (ESP32-C6, ESP32-C3, nRF52840, RP2040, MG24 atď.) so spotrebou prúdu v rozsahu od 2 do 90 μA je možné osadiť na XIAO_LoRa dosku, ktorá je tiež od Your-IoT.
+Táto doska má integrované rezistory priamo na sebe a konektor na pripojenie vodičov z batériových svoriek a tiež aj integrovaný nabíjací obvod pre Li-Ion / Li-pol batérie. Táto doska plošných spojov je tiež menšia v porovnaní 433_LoRa_Lolin32.
+U prijímača neočakávajte spotrebu nižšiu ako 10 mAh z dôvodu, že najväčšiu časť spotreby tvorí LoRa prijímač v režime konštantného príjmu (aj keď mikrokontróler spí).
+</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -568,7 +565,7 @@ Táto doska má integrované rezistory priamo na sebe a konektor na pripojenie v
                 <i class="faq-icon bi bi-question-circle"></i>
                <h3>Aké jazykové mutácie ponúka rozhranie Batmonitor?</h3>
 <div class="faq-content">
-<p>Batmonitor ponúka vo svojom webovom rozhraní slovenský alebo anglický jazyk.
+<p>Batmonitor existuje v slovenskom, alebo anglickom jazyku. Samostatná verzia bez prepínania jazyka.
 </p>
 </div>
 
@@ -579,7 +576,7 @@ Táto doska má integrované rezistory priamo na sebe a konektor na pripojenie v
                 <i class="faq-icon bi bi-question-circle"></i>
 <h3>Je možné dáta z Batmonitoru previesť do iného systému?</h3>
 <div class="faq-content">
-<p>Áno, Batmonitor poskytuje <strong>výstup JSON</strong>, ktorý je prístupný prostredníctvom GET požiadavky, čo umožňuje získať dáta vrátane časových značiek.
+<p>Áno, Batmonitor poskytuje <strong>výstup JSON</strong>, ktorý je prístupný prostredníctvom GET požiadavky, čo umožňuje získať dáta vrátane časových značiek (time-series dáta).
 </p>
 </div>
 
@@ -601,7 +598,7 @@ Dáta sa zapisujú do databázy prostredníctvom súboru PHP, na ktorý sa poži
 <h3>Sú prenášané dáta skrz LoRa šifrované?</h3>
 <div class="faq-content">
 <p><strong>Dáta nie sú šifrované.</strong> Nie je to potrebné vzhľadom na to, že sa neprenášajú citlivé údaje. Šifrovanie je možné implementovať.
-Šifrovanie však predĺži celkový uptime zariadenia a úmerne skráti výdrž batérie.</p>
+Šifrovanie však predĺži celkový uptime zariadenia a úmerne skráti výdrž batérie. Pre rýchle kryptografické operácie odporúčam využiť AES kryptografický akcelerátor, ktorým ESP32 disponuje.</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
@@ -612,8 +609,8 @@ Dáta sa zapisujú do databázy prostredníctvom súboru PHP, na ktorý sa poži
                 <i class="faq-icon bi bi-question-circle"></i>
 <h3>Ako vysielač vykonáva meranie?</h3>
 <div class="faq-content">
-<p>Vysielač má delič napätia, štandardne s pomerom 1:5,7 pre pokrytie rozsahu 0 až 15V. Na vstupe deliča napätia je trvalé napätie batérie a na jeho výstupe je napätie znížené pre bezpečný rozsah ESP32.
-ESP32 prečíta hodnotu ADC, potom ju prevedie na milivolty a tiež vypočíta pôvodnú (vstupnú) hodnotu napätia batérie. Táto hodnota sa vysiela cez LoRa.</p>
+<p>Vysielač má napäťový delič, štandardne s pomerom 1:5,7 pre pokrytie rozsahu 0 až 15V. Na vstupe deliča napätia je trvalé napätie batérie a na jeho výstupe je napätie znížené pre bezpečný rozsah ESP32 (3,3V max).
+ESP32 prečíta hodnotu ADC, potom ju prevedie na milivolty a tiež vypočíta pôvodnú (vstupnú) hodnotu napätia batérie. Táto hodnota sa vysiela cez LoRa. Zmenou pomeru napäťového deliča môžete získať vyšší rozsah, napríklad aj do 48V, musíte však počítať s nižšou presnosťou kroku.</p>
 </div>
 
                 <i class="faq-toggle bi bi-chevron-right"></i>
